@@ -54,6 +54,16 @@ pipeline{
               }
             }
         }
+
+        stage('Functional Test'){
+          steps{
+              dir('functional-test'){
+                git credentialsId: 'logintomcat', url: 'https://github.com/rafaelroque/tasks-functional-test.git'
+                sh 'mvn test'
+              }
+              
+          }
+        }
     
     
     
