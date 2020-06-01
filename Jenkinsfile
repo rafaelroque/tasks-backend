@@ -50,9 +50,9 @@ pipeline{
             dir('frontend'){
                 git credentialsId: 'logintomcat', url: 'https://github.com/rafaelroque/tasks-frontend.git'
                 sh 'mvn clean package'
+                deploy adapters: [tomcat9(credentialsId: 'logintomcat', path: '', url: 'http://localhost:8080')], contextPath: 'tasks', war: 'target/tasks.war'
               }
-              deploy adapters: [tomcat9(credentialsId: 'logintomcat', path: '', url: 'http://localhost:8080')], contextPath: 'tasks', war: 'target/tasks.war'
-          }
+            }
         }
     
     
