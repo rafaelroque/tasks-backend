@@ -32,7 +32,7 @@ pipeline{
         }
         stage('Deploy Backend'){
           steps{
-            deploy adapters: [tomcat9(credentialsId: 'logintomcat', path: '', url: ''), tomcat9(credentialsId: 'logintomcat', path: '', url: 'http://localhost:8080')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
+            deploy adapters: [tomcat9(credentialsId: 'logintomcat', path: '', url: ''), tomcat9(credentialsId: 'logintomcat', path: '', url: 'http://localhost:8080/')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
           }
         }
     }
