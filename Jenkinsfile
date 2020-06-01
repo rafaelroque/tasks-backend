@@ -38,8 +38,11 @@ pipeline{
     
     stage('API Test'){
           steps{
-              git credentialsId: 'logintomcat', url: 'https://github.com/rafaelroque/tasks-api-test.git'
-              echo 'mvn test'
+              dir('api-test'){
+                git credentialsId: 'logintomcat', url: 'https://github.com/rafaelroque/tasks-api-test.git'
+                echo 'mvn test'
+              }
+              
           }
         }
     }
