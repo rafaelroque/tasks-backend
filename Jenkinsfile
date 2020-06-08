@@ -25,7 +25,7 @@ pipeline{
         stage('Quality Gate'){
          steps{
            sleep(60)
-           timeout(time:30 , unit:'MINUTES'){
+           timeout(time:5 , unit:'MINUTES'){
              waitForQualityGate abortPipeline:true
            }
          }
@@ -55,15 +55,7 @@ pipeline{
             }
         }
 
-        stage('Functional Test'){
-          steps{
-              dir('functional-test'){
-                git credentialsId: 'logintomcat', url: 'https://github.com/rafaelroque/tasks-functional-test.git'
-                sh 'mvn test'
-              }
-              
-          }
-        }
+        
         stage('Deploy Prod'){
            steps{
              sh 'docker-compose build'
