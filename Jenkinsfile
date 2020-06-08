@@ -66,6 +66,11 @@ pipeline{
     
     
     }
+    post{
+      always{
+        archiveArtifacts artifacts: 'targets/tasks-backend.war, frontend/target/tasks.war', onlyIfSuccessful: true
+      }
+    }
     
 }
     
